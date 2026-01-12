@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Attuned | Church Engagement Analytics for Planning Center</title>
+    <meta
+      name="description"
+      content="Attuned helps church staff identify drifting members and measure discipleship growth using analytics built for Planning Center Online."
+    />
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome (free) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+
+    <!-- Site styles (split out to reduce file size) -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Minimal critical styles so the page still looks OK in Canvas preview -->
+    <style>
+      :root {
+        --attuned-olive: #8fa37a;
+        --attuned-olive-dark: #6f8460;
+        --attuned-cream: #f4f3ee;
+        --ink-900: #111827;
+        --ink-700: #374151;
+        --ink-500: #6b7280;
+        --surface-soft: #f8f9f7;
+      }
+      body {
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink-700);
+        line-height: 1.6;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--ink-900);
+        letter-spacing: -0.015em;
+      }
+      section {
+        padding: 5rem 0;
+      }
+      .hero {
+        background: linear-gradient(rgba(11, 31, 59, 0.75), rgba(11, 31, 59, 0.75)),
+          url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=2400&q=70") center/cover;
+        color: #fff;
+      }
+      .hero h1,
+      .hero p {
+        color: #fff;
+      }
+      .hero .badge {
+        background: none;
+        border: none;
+        color: rgba(244, 243, 238, 0.85);
+        padding: 0;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+      }
+      .btn-attuned {
+        background: var(--attuned-olive);
+        border-color: var(--attuned-olive);
+        box-shadow: 0 6px 16px rgba(143, 163, 122, 0.35);
+      }
+      .btn-attuned:hover {
+        background: var(--attuned-olive-dark);
+        border-color: var(--attuned-olive-dark);
+        box-shadow: 0 8px 22px rgba(111, 132, 96, 0.4);
+      }
+      .feature-card {
+        border-radius: 1.25rem;
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        background: #fff;
+      }
+      .bg-soft {
+        background: var(--surface-soft);
+      }
+      .navbar .nav-link {
+        color: var(--ink-900);
+      }
+      .navbar .nav-link:hover,
+      .navbar .nav-link.active {
+        color: var(--attuned-olive-dark);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+      <div class="container py-3">
+        <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="#">
+          <img
+            src="images/attuned-logo-dark-N.png"
+            alt="Attuned"
+            height="38"
+            class="brand-mark"
+          />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#attunedNav"
+          aria-controls="attunedNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="attunedNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+            <li class="nav-item"><a href="#how" class="nav-link px-0" data-nav="how">How It Works</a></li>
+            <li class="nav-item"><a href="#snapshot" class="nav-link px-0" data-nav="snapshot">Weekly Snapshot</a></li>
+            <li class="nav-item"><a href="#features" class="nav-link px-0" data-nav="features">Features</a></li>
+
+            <li class="nav-item mt-2 mt-lg-0">
+              <a href="#demo" class="btn btn-attuned text-white nav-cta">Request Demo Access</a>
+            </li>
+
+            <li class="nav-item d-none d-lg-flex align-items-center" aria-hidden="true">
+              <span class="nav-sep mx-2"></span>
+            </li>
+
+            <li class="nav-item mt-2 mt-lg-0">
+              <a
+                href="https://useattuned.com/login"
+                class="nav-link px-0 nav-login d-inline-flex align-items-center gap-2"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i><span>Login</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="container" style="padding: 6rem 0">
+        <div class="row">
+          <div class="col-lg-7">
+            <span class="badge mb-3">Built for churches using Planning Center</span>
+            <h1 class="display-4 fw-bold">Know who’s not growing.<br /> See the drift &amp; take action.</h1>
+            <p class="lead mt-3 opacity-90">
+              Attuned helps church staff identify drifting members and measure discipleship growth using analytics built for Planning Center Online
+            </p>
+            <div class="d-flex gap-3 mt-4">
+              <a href="#demo" class="btn btn-attuned btn-lg text-white">Request Demo Access</a>
+              <a href="#how" class="btn btn-outline-light btn-lg">How It Works</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- WHY ATTUNED EXISTS -->
+    <section class="reveal">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="fw-bold">Why Attuned exists</h2>
+
+		<h3 class="my-4">It's pretty simple, actually. Attuned gives Pastoral clarity and actionable items from Planning Center data—so your team knows who needs care, follow-up, and encouragement this week.</h3>
+            <p class="text-muted fs-5 mt-3">
+              Planning Center is excellent at collecting and reporting church data. But most church teams don’t struggle with access to information—they struggle with interpretation at scale.
+            </p>
+            <p class="text-muted fs-5">
+              Attuned exists to bridge that gap. It translates engagement data into pastoral priorities that fit naturally into weekly staff rhythms, so care doesn’t depend on who remembers to run which report.
+            </p>
+          
+          </div>
+        </div>
+
+    
+      </div>
+    </section>
+
+    <!-- ATTUNED VS PLANNING CENTER -->
+    <section class="attuned-compare reveal">
+      <div class="container position-relative">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-8 text-center">
+            <h2 class="fw-bold text-white">Planning Center reports. Attuned interprets.</h2>
+            <p class="text-white-50 fs-5 mt-2">Attuned doesn’t replace Planning Center—it makes its data pastorally usable.</p>
+          </div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-5">
+            <div class="feature-card p-4 h-100 compare-card pc-side">
+              <img
+                src="images/planning-center-logo.png"
+                alt="Planning Center"
+                class="card-logo pc"
+              />
+              <h6 class="fw-semibold mb-3">Planning Center reporting</h6>
+              <ul class="text-muted mb-0">
+                <li>Shows what happened</li>
+                <li>Requires manual setup and filtering</li>
+                <li>Designed for administrators and power users</li>
+                <li>Leaves interpretation and follow-up to staff capacity</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-5">
+            <div class="feature-card p-4 h-100 compare-card attuned-side">
+              <img
+                src="images/attuned-logo-dark-n.png"
+                alt="Attuned"
+                class="card-logo attuned"
+              />
+              <h6 class="fw-semibold mb-3">Attuned actionable data</h6>
+              <ul class="text-muted mb-0">
+                <li>Highlights who needs attention now</li>
+                <li>Interprets patterns automatically</li>
+                <li>Designed for pastors, execs, and care teams</li>
+                <li>Creates consistent follow-up across the church</li>
+                <li>Surfaces formation-related patterns over time</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="how-soft reveal">
+      <div class="container">
+        <div class="row text-center mb-5">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="fw-bold">From data to discipleship clarity</h2>
+            <p class="text-muted fs-5">Engagement signals you already track—translated into staff-ready next steps.</p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="feature-card p-4 h-100">
+              <div class="icon-chip mb-3"><i class="bi bi-plug"></i></div>
+              <h5 class="fw-semibold">Connect Planning Center</h5>
+              <p class="text-muted mb-0">Securely link people, groups, services, and participation data you already use.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="feature-card p-4 h-100">
+              <div class="icon-chip mb-3"><i class="bi bi-graph-up-arrow"></i></div>
+              <h5 class="fw-semibold">Spot drift early</h5>
+              <p class="text-muted mb-0">Identify declining attendance or serving patterns before people quietly disengage.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="feature-card p-4 h-100">
+              <div class="icon-chip mb-3"><i class="bi bi-compass"></i></div>
+              <h5 class="fw-semibold">Formation signals</h5>
+              <p class="text-muted mb-0">Notice long-term patterns that often accompany spiritual growth—expressed as trends and signals, not scores.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="feature-card p-4 h-100">
+              <div class="icon-chip mb-3"><i class="bi bi-check2-circle"></i></div>
+              <h5 class="fw-semibold">Act with confidence</h5>
+              <p class="text-muted mb-0">Generate outreach lists and follow-up rhythms your team can sustain weekly.</p>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- METRICS SNAPSHOT -->
+    <section class="bg-soft reveal" id="snapshot">
+      <div class="container">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-8 text-center">
+            <h2 class="fw-bold">A clear snapshot—every week</h2>
+            <p class="small text-muted mt-2">This is what your Monday morning could look like.</p>
+            <p class="text-muted fs-5">One glance shows where care and follow-up are needed most.</p>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="metrics-card p-4 p-lg-5">
+              <div class="row g-4 text-center">
+                <div class="col-md-3">
+                  <a class="metric metric-link p-3 h-100" href="#demo" aria-label="View at-risk list in demo">
+                    <div class="metric-label">At-risk members</div>
+                    <div class="metric-value">24</div>
+                    <div class="metric-delta">▲ 6 vs last week</div>
+                    <div class="mt-2 small" style="color: var(--attuned-olive-dark)">View list</div>
+                  </a>
+                </div>
+                <div class="col-md-3">
+                  <div class="metric p-3 h-100">
+                    <div class="metric-label">Re-engaged</div>
+                    <div class="metric-value" style="color: var(--attuned-olive)">9</div>
+                    <div class="metric-delta">This week</div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="metric p-3 h-100">
+                    <div class="metric-label">Group consistency</div>
+                    <div class="metric-value">78%</div>
+                    <div class="metric-delta">▲ 4% trend</div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="metric p-3 h-100">
+                    <div class="metric-label">Follow-ups assigned</div>
+                    <div class="metric-value">15</div>
+                    <div class="metric-delta">Active this week</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="email-callout p-4 p-lg-5 mt-4">
+                <div class="row align-items-center g-4">
+                  <div class="col-lg-6">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                      <span class="mini-chip"><i class="bi bi-envelope-paper"></i> Weekly snapshot email</span>
+                      <a class="muted-link small" href="#demo">See an example</a>
+                    </div>
+                    <h3 class="h4 fw-bold mb-2">Your outreach priorities—delivered Monday morning</h3>
+                    <p class="text-muted fs-5 mb-3">
+                      Attuned sends a simple, staff-ready summary with the people who need a touchpoint, what changed, and suggested next steps.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                      <span class="mini-chip"><i class="bi bi-people"></i> Role-based recipients</span>
+                      <span class="mini-chip"><i class="bi bi-shield-check"></i> Privacy-first</span>
+                      <span class="mini-chip"><i class="bi bi-clock"></i> 2-minute read</span>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="email-preview">
+                      <div class="top">
+                        <span><strong>Attuned</strong> — Weekly Snapshot</span>
+                        <span class="small">Mon 8:05 AM</span>
+                      </div>
+                      <div class="body">
+                        <div class="fw-semibold mb-1">This week at a glance</div>
+                        <div class="small text-muted mb-2">(Engagement &amp; formation signals)</div>
+                        <ul class="mb-3">
+                          <li><em>Formation trend:</em> growing consistency in group participation</li>
+                          <li><strong>24</strong> at-risk members (▲ 6)</li>
+                          <li><strong>15</strong> follow-ups assigned</li>
+                          <li><strong>9</strong> re-engaged this week</li>
+                        </ul>
+                        <div class="fw-semibold mb-1">Top outreach priorities</div>
+                        <div class="small text-muted">(Example names)</div>
+                        <ol class="mb-0">
+                          <li>Jordan L. — missed 3 services</li>
+                          <li>Maria R. — group absence 2 weeks</li>
+                          <li>Chris T. — serving drop-off</li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT ATTUNED DOES NOT DO -->
+    <section class="reveal">
+      <div class="container">
+        <div class="row justify-content-center align-items-center g-5">
+          <div class="col-lg-6">
+            <h3 class="fw-semibold mb-3">What Attuned doesn’t do</h3>
+            <ul class="text-muted fs-6 list-unstyled mb-3">
+              <li>• It does not score spiritual maturity</li>
+              <li>• It does not monitor private spiritual practices</li>
+              <li>• It does not replace pastoral discernment</li>
+            </ul>
+            <p class="text-muted fs-6 mb-0">Attuned exists to support shepherds—not automate judgment.</p>
+          </div>
+          <div class="col-lg-5">
+            <div class="feature-card h-100" style="border-color: rgba(15,23,42,.10)">
+              <img
+                src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1400&q=70"
+                alt="People worshipping together"
+                style="width: 100%; height: 260px; object-fit: cover"
+              />
+              <div class="p-3 p-lg-4">
+                <div class="small text-muted">Pastoral care is contextual.</div>
+                <div class="fw-semibold" style="color: var(--ink-900)">Signals support discernment—never replace it.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="bg-soft reveal">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-8">
+            <h2 class="fw-bold">Built for church teams, not analysts</h2>
+            <p class="text-muted fs-5">Clean dashboards, clear priorities, and ministry-first design.</p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="feature-card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=800&q=70"
+                alt="Pastor reviewing notes"
+                style="width: 100%; height: 140px; object-fit: cover"
+              />
+              <div class="p-4">
+                <h6 class="fw-semibold">Drift alerts</h6>
+                <p class="text-muted">Weekly visibility into disengagement signals.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="feature-card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=70"
+                alt="Church volunteers meeting"
+                style="width: 100%; height: 140px; object-fit: cover"
+              />
+              <div class="p-4">
+                <h6 class="fw-semibold">Group &amp; serving view</h6>
+                <p class="text-muted">Understand how participation connects to retention.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="feature-card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=70"
+                alt="Church staff planning"
+                style="width: 100%; height: 140px; object-fit: cover"
+              />
+              <div class="p-4">
+                <h6 class="fw-semibold">Action lists</h6>
+                <p class="text-muted">Turn insight into clear next steps.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="feature-card h-100">
+              <img
+                src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=800&q=70"
+                alt="Pastoral care conversation"
+                style="width: 100%; height: 140px; object-fit: cover"
+              />
+              <div class="p-4">
+                <h6 class="fw-semibold">Permissioned access</h6>
+                <p class="text-muted">Protect sensitive pastoral data.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUSTED BY -->
+    <section class="bg-soft">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-10 text-center">
+            <p class="text-muted mb-4">Trusted by pastors and church teams at</p>
+            <div class="trusted-logos d-flex flex-wrap justify-content-center gap-3 gap-md-4">
+              <div class="logo-placeholder">Grace Church</div>
+              <div class="logo-placeholder">River Valley</div>
+              <div class="logo-placeholder">New Life</div>
+              <div class="logo-placeholder">Hope Community</div>
+              <div class="logo-placeholder">Cornerstone</div>
+            </div>
+            <p class="small text-muted mt-3">Churches of 150–3,000 using Planning Center Online</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO -->
+    <section id="demo">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <h2 class="fw-bold">Request Demo Access</h2>
+            <p class="text-muted fs-5">See how Attuned works with your Planning Center data and creates simple, easy-to-follow action steps. Our demo data shows the power of knowing exactly where your flock is spiritually.</p>
+          </div>
+          <div class="col-lg-6">
+            <form class="feature-card p-4 p-lg-5" onsubmit="return false">
+              <input class="form-control mb-3" placeholder="Name" />
+              <input class="form-control mb-3" placeholder="Church Email" />
+              <input class="form-control mb-4" placeholder="Church Name" />
+              <button class="btn btn-attuned btn-lg text-white w-100" type="submit">Submit</button>
+              <div class="text-muted small mt-2">Demo form placeholder (no submission wired).</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer pt-5">
+      <div class="container">
+        <div class="row g-4 pb-4">
+          <div class="col-lg-4">
+            <a class="d-inline-flex align-items-center gap-2" href="#" aria-label="Attuned home">
+              <img
+                src="images/attuned-logo-white-n.png"
+                alt="Attuned"
+                height="38"
+                class="brand-mark"
+              />
+            </a>
+            <p class="footer-muted mt-3 mb-3" style="max-width: 28rem">
+              Pastoral clarity from Planning Center data—so your team knows who needs care, follow-up, and encouragement this week.
+            </p>
+            <div class="social d-flex gap-2">
+              <a href="#" aria-label="Attuned on X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Attuned on LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Attuned on YouTube"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <div class="footer-title">Product</div>
+            <ul class="list-unstyled d-grid gap-2 mb-0">
+              <li><a href="#how">How it works</a></li>
+              <li><a href="#snapshot">Weekly snapshot</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#demo">Request Demo Access</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <div class="footer-title">Company</div>
+            <ul class="list-unstyled d-grid gap-2 mb-0">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Security</a></li>
+              <li><a href="#">Terms</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="footer-title">Contact</div>
+            <ul class="list-unstyled d-grid gap-2 mb-3">
+              <li><a href="mailto:hello@attuned.church">hello@attuned.church</a></li>
+              <li><a href="#demo">Schedule a walkthrough</a></li>
+              <li><span class="footer-muted">Mon–Fri • 9–5 ET</span></li>
+            </ul>
+            <div class="feature-card p-3" style="border-color: rgba(244,243,238,.14); background: rgba(255,255,255,.04)">
+              <div class="d-flex align-items-start gap-2">
+                <i class="bi bi-shield-check" style="color: var(--attuned-olive)"></i>
+                <div>
+                  <div class="fw-semibold" style="color: rgba(244,243,238,.95)">Privacy-first by design</div>
+                  <div class="footer-muted small">Role-based access and careful handling of pastoral data.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-divider py-3 d-flex flex-column flex-md-row justify-content-between gap-2">
+          <span class="footer-muted">© <span id="year"></span> Attuned. All rights reserved.</span>
+          <span class="footer-muted">Analytics for churches using Planning Center Online</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
